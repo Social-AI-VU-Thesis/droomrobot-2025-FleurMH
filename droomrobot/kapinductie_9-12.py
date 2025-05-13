@@ -230,7 +230,7 @@ class Droomrobot:
             if reply.response.query_result.query_text:
                 print(f'transcript is {reply.response.query_result.query_text}')
                 gpt_response = self.gpt.request(
-                    GPTRequest(f'Je bent een sociale robot die praat met een kind tussen de 6 en 9 jaar oud. '
+                    GPTRequest(f'Je bent een sociale robot die praat met een kind tussen de 9 en 12 jaar oud. '
                                f'De robot stelt een vraag over een interesse van het kind.'
                                f'Jouw taak is om de key entity er uit te filteren'
                                f'Bijvoorbeeld bij de vraag: "wat is je lievelingsdier?" '
@@ -264,7 +264,7 @@ class Droomrobot:
             if reply.response.query_result.query_text:
                 print(f'transcript is {reply.response.query_result.query_text}')
                 gpt_response = self.gpt.request(
-                    GPTRequest(f'Je bent een sociale robot die praat met een kind tussen de 6 en 9 jaar oud. '
+                    GPTRequest(f'Je bent een sociale robot die praat met een kind tussen de 9 en 12 jaar oud. '
                                f'De robot stelt een vraag over een interesse van het kind.'
                                f'Jouw taak is om de mening van het kind er uit te filteren'
                                f'Bijvoorbeeld bij de vraag: "hoe goed is het gegaan?" '
@@ -322,15 +322,15 @@ class Droomrobot:
         sleep(3)
         self.say(f'{str(child_age)} jaar. Oh wat goed, dan ben je al oud genoeg om mijn speciale trucje te leren.')
         self.say('Ik heb namelijk een truukje dat bij heel veel kinderen goed werkt om alles in het ziekenhuis makkelijker te maken.')
-        self.say('Bijvoorbeeld als je gaat slapen bij de slaapdokter.')
-        self.say('Ik ben benieuwd hoe goed het bij jou gaat werken.')
-        self.say('Mijn trucje is dat je gaat luisteren naar een bijzonder verhaal.')
-        self.say('Het is een soort droom reis die jou helpt om je nu en straks fijn, rustig en sterk te voelen.')
-        self.say('We gaan het verhaal van jouw droomreis samen maken zodat het precies bij jou past, want dan werkt het het allerbeste.')
-        self.say('Nu ga ik je wat meer vertellen over het trucje wat ik kan.')
-        self.say('Met een droomreis kun je aan iets fijns denken terwijl je hier in het ziekenhuis bent.')
-        self.say('Ik zal het trucje even voor doen.')
-        self.say('Ik ga in mijn droomreis het liefst in gedachten naar de wolken.')
+        self.say('Die truuk werkt bij veel kinderen heel goed.')
+        self.say('Ik ben dan ook benieuwd hoe goed het bij jou gaat werken.')
+        self.say('Jij kunt jezelf helpen door je lichaam en hoofd te ontspannen.')
+        self.say('Ik ga je wat vertellen over deze truuk.')
+        self.say('let maar goed op, dan ga jij het ook leren.')
+        self.say('we gaan samen een reis maken in je fantasie, wat ervoor zorgt dat jij je fijn, rustig en sterk voelt.')
+        self.say('Met je fantasie kun je aan iets fijns denken terwijl je hier bent, als een soort droom. En het grappige is dat als je denkt aan iets fijns, dat jij je dan ook fijner gaat voelen.')
+        self.say('Ik zal het even voor doen.')
+        self.say('Ik ga in mijn droomreis het liefst in gedachten naar de wolken, lekker relaxed zweven.')
         # self.say('Kijk maar eens in mijn ogen, daar zie je wat ik bedoel.')
         # self.say('Cool hé.')
         self.say('Maar het hoeft niet de wolken te zijn. Iedereen heeft een eigen fijne plek.')
@@ -343,7 +343,7 @@ class Droomrobot:
         #                             'droom_plek')
         # self.mini.animation.request(MiniActionRequest("018"))
 
-        droomplek = self.ask_entity_llm('Wat is een plek waar jij je fijn voelt?')
+        droomplek = self.ask_entity_llm('Naar welke plek zou jij graag willen?')
 
         if droomplek:
             if 'strand' in droomplek:
@@ -360,7 +360,7 @@ class Droomrobot:
         droomplek_lidwoord = self.get_article(droomplek)
 
         # SAMEN OEFENEN
-        self.say('Laten we alvast gaan oefenen om samen een mooie droomreis te maken, zodat het je zometeen gaat helpen bij de slaapdokter.')
+        self.say('Laten we alvast gaan oefenen om samen een mooie droomreis te maken, zodat het je zometeen gaat helpen als je onder narcose gaat.')
         self.say('Ga even lekker zitten zoals jij dat fijn vindt.')
         sleep(1)
         zit_goed = self.ask_yesno("Zit je zo goed?")
@@ -372,7 +372,7 @@ class Droomrobot:
             sleep(1)
             self.say('Als je goed zit.')
         self.say('mag je je ogen dicht doen.')
-        self.say('dan werkt het truukje het beste.')
+        self.say('en dan gaan we beginnen met de droomreis.')
         self.say('En terwijl je nu zo lekker zit mag je je handen op je buik doen en rustig gaan ademhalen')
 
         self.say('Adem rustig in.')
@@ -389,8 +389,8 @@ class Droomrobot:
             elif 'ruimte' in droomplek:
                 self.ruimte_oefenen(child_name, child_age)
 
-        self.say('En wat zo fijn is, is dat je iedere keer als je deze droomreis nodig hebt, je weer terug kan gaan in gedachten naar deze fijne plek.')
-        self.say('Je hoeft alleen maar een paar keer diep in en uit te ademen. Ik ben benieuwd hoe goed dit je zometeen gaat helpen.')
+        self.say('en wat zo fijn is, is dat iedere keer als je het nodig hebt, je weer terug kan gaan in gedachten naar deze fijne plek')
+        self.say('Je hoeft alleen maar diep in en uit te ademen. Ik ben benieuwd hoe goed dit je zometeen gaat helpen.')
         self.say('Nu je genoeg geoefend hebt mag je je ogen weer lekker opendoen.')
         self.say(f'Wanneer je zometeen aan de beurt bent ga ik je helpen om weer naar {droomplek_lidwoord} {droomplek} te gaan in gedachten. Je hebt super goed geoefend, dus je kan verrast zijn hoe goed het zometeen gaat!')
 
@@ -398,9 +398,9 @@ class Droomrobot:
         sleep(5)
         self.say('Wat fijn dat ik je weer mag helpen, we gaan weer samen een droomreis maken.')
         self.say('Omdat je net al zo goed hebt geoefend, zul je zien dat het nu nog beter en makkelijker gaat.')
-        self.say('Je mag weer goed gaan zitten en je ogen dicht doen zodat deze droomreis nog beter voor jou werkt.')
+        self.say('Je mag je nu lekker ontspannen en je ogen dicht doen zodat je helemaal kunt genieten van de rust en zodat het truukje nog beter werkt.')
         sleep(1)
-        self.say('Luister maar weer goed naar mijn stem en merk maar dat andere geluiden in het ziekenhuis veel stiller worden.')
+        self.say('Luister goed naar mijn stem en merk maar dat andere geluiden in het ziekenhuis veel stiller worden.')
         self.say('Ga maar rustig ademen zoals je dat gewend bent.')
         self.say('Adem rustig in.')
         self.play_audio('resources/audio/breath_in.wav')
@@ -417,6 +417,7 @@ class Droomrobot:
 
         ### AFSCHEID
         ## geen afscheid want het kind slaapt?
+    '''
         self.say('Wat heb je jezelf goed geholpen om alles makkelijker te maken.')
         ging_goed = self.ask_opinion_llm("Hoe goed is het gegaan?")
         if 'positive' in ging_goed:
@@ -430,7 +431,7 @@ class Droomrobot:
         self.say('Je kunt dit ook zonder mij oefenen.')
         self.say('Je hoeft alleen maar je ogen dicht te doen en terug te denken aan jouw plek in gedachten.')
         self.say('Ik ben benieuwd hoe goed je het de volgende keer gaat doen. Je doet het op jouw eigen manier, en dat is precies goed.')
-
+    '''
 
 
     def strand(self, child_name: str, child_age: int):
