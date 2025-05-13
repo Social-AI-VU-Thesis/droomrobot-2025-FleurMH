@@ -333,15 +333,18 @@ class Droomrobot:
         # self.say('Cool hé')
         self.say('En wat nu zo handig is aan dit truukje is dat het je ook kan helpen met het sonde inbrengen.')
 
-      #!!!!!!!!
-        self.say('Je kan bijvoorbeeld in gedachten met een raceauto racen, naar een waterpretpark, of als een dolfijn in de zee zwemmen?')
+        self.say('Door ergens anders aan te denken, zoals iets dat jij leuk vind, richt je je aandacht daarop in plaats van de sonde.')
+        self.say('Dat maakt het vaker minder ongemakkelijk, en kan het fijner laten voelen.')
+        self.say('Wat goed helpt is om je voor te stellen dat je in een raceauto door een tunnel scheurt, of van een waterglijvbaan gaat, of als dolfijn door het water beweegt.')
+        self.say('Welke lijkt jij het leukste?')
+        
 
         # droomplek = self.ask_entity('Wat zou jij willen doen? Je kan kiezen uit raceauto, waterpretpark of dolfijn.',
         #                             {'droom_plek': 1},
         #                             'droom_plek',
         #                             'droom_plek')
 
-        droomplek = self.ask_entity_llm('Wat zou jij willen doen?') ## wellicht "kies uit raceauto racen, naar een waterpretpark of als dolfijn in de zee zwemmen"
+        droomplek = self.ask_entity_llm('De waterglijvaan, de race-auto of dolfijn?') ## wellicht "kies uit raceauto racen, naar een waterpretpark of als dolfijn in de zee zwemmen"
 
         if droomplek:
             if 'raceauto' in droomplek:
