@@ -191,7 +191,7 @@ class Bloedafname6:
             self.droomrobot.say('Dat geeft niets.')
             self.droomrobot.say('Je hebt goed je best gedaan.')
             self.droomrobot.say('En kijk welke stapjes je allemaal al goed gelukt zijn.')
-        self.droomrobot.say('je kon al goed een' f'{kleur} lichtje uitzoeken.') #weet niet of het zo goed gaat met '
+        self.droomrobot.say('je kon al goed een {kleur} lichtje uitzoeken.') #weet niet of het zo goed gaat met '
         self.droomrobot.say('En weet je wat nu zo fijn is, hoe vaker je dit truukje oefent, hoe makkelijker het wordt.')
         self.droomrobot.say('Je kunt dit ook zonder mij oefenen.')
         self.droomrobot.say('Je hoeft alleen maar je ogen dicht te doen en aan je lichtje te denken.')
