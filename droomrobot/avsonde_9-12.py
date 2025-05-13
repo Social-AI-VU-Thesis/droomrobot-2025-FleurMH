@@ -361,27 +361,27 @@ class Droomrobot:
         droomplek_lidwoord = self.get_article(droomplek)
 
         # SAMEN OEFENEN
-        self.say('Laten we alvast gaan oefenen om samen een mooie droomreis te maken, zodat het je zometeen gaat helpen bij het sonde inbrengen.')
-        self.say('De sonde is een soort zacht rietje \pau=50\ die je gaat helpen om je goed te voelen.')
-        self.say('Ga even lekker zitten zoals jij dat fijn vindt.')
+        self.say('Laten we alvast gaan oefenen om samen een ontspannen reis te maken, zodat het je zometeen gaat helpen bij het inbrengen van de sonde.')
+        self.say('De sonde is een dun zacht buiksje dat heel makkelijk door je neus naar binnen kan om jou te helpen je beter te voelen.')
+        self.say('Ga even lekker zitten zoals jij dat prettig vindt.')
         sleep(1)
         zit_goed = self.ask_yesno("Zit je zo goed?")
         if 'yes' in zit_goed:
             self.say('En nu je lekker bent gaan zitten.')
         else:
-            self.say('Het zit vaak het lekkerste als je stevig gaat zitten.')
-            self.say('met beide benen op de grond.')
+            self.say('Het helpt vaak als je je benen een beetje ontspant.')
+            self.say('probeer maar een fijne houding te vinden.')
             sleep(1)
             self.say('Als je goed zit.')
         self.say('mag je je ogen dicht doen.')
-        self.say('dan werkt het truukje het beste.')
-        self.say('En terwijl je nu zo lekker zit, mag je je handen op je buik doen en rustig gaan ademhalen.')
+        self.say('dat maakt het makkelijker om je te concenteren.')
+        self.say('En terwijl je nu zo zit, leg je rustig je handen op je buik doen en adem je kalm in en uit.')
 
         self.say('Adem rustig in.')
         self.play_audio('resources/audio/breath_in.wav')
         self.say('en rustig uit.')
         self.play_audio('resources/audio/breath_out.wav')
-        self.say('En voel maar dat je buik iedere keer rustig omhoog en omlaag gaat als je zo lekker aan het ademhalen bent.')
+        self.say('Voel hoe je buik zachtjes op en neer beweegt bij iedere ademhaling.')
 
         if droomplek:
             if 'raceauto' in droomplek:
@@ -407,11 +407,11 @@ class Droomrobot:
         
         ## INTERVENTIE
         sleep(5)
-        self.say('Wat fijn dat ik je weer mag helpen, we gaan weer samen een droomreis maken.')
+        self.say('Wat fijn dat ik je weer mag helpen, we gaan weer samen een reis door je fantasie maken.')
         self.say('Omdat je net al zo goed hebt geoefend zul je zien dat het nu nog beter en makkelijker gaat.')
-        self.say('Je mag weer goed gaan zitten en je ogen dicht doen zodat deze droomreis nog beter voor jou werkt.')
+        self.say('Je mag weer goed gaan zitten en je ogen dicht doen zodat deze droomreis nog beter werkt.')
         self.say('Luister maar weer goed naar mijn stem en merk maar dat andere geluiden in het ziekenhuis veel stiller worden.')
-        self.say('Ga maar rustig ademen zoals je dat gewend bent.')
+        self.say('Ga maar rustig ademen zoals je dat gewend bent, met je handen op je buik.')
 
         self.say('Adem rustig in.')
         self.play_audio('resources/audio/breath_in.wav')
