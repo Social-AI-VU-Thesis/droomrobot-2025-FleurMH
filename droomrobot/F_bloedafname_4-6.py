@@ -6,7 +6,7 @@ from sic_framework.services.openai_gpt.gpt import GPTRequest
 from droomrobot import Droomrobot, AnimationType
 
 
-class Bloedafname6:
+class Bloedafname4:
     
     def __init__(self, mini_ip, mini_id, mini_password, redis_ip,
                  google_keyfile_path, sample_rate_dialogflow_hertz=44100, dialogflow_language="nl",
@@ -52,13 +52,13 @@ class Bloedafname6:
         #                             'droom_plek',
         #                             'droom_plek')
 
-        droomplek = self.droomrobot.ask_entity_llm('Wil je naar het strand, het bos, de speeltuin of de ruimte?')
+        droomplek = self.droomrobot.ask_entity_llm('Wil je naar het strand, het bos, de speeltuin of de ruimte? Of wil je ergens anders naartoe?')
 
         if droomplek:
             if 'strand' in droomplek:
                 self.strand(child_name, child_age)
             elif 'bos' in droomplek:
-                self.bos(child_name, child_age)
+                self.bos(child_name, child_age)S
             elif 'speeltuin' in droomplek:
                 self.speeltuin(child_name, child_age)
             elif 'ruimte' in droomplek:
@@ -71,12 +71,12 @@ class Bloedafname6:
         droomplek_lidwoord = self.droomrobot.get_article(droomplek)
 
         # SAMEN OEFENEN
-        self.droomrobot.say('Oke, laten we samen gaan oefenen.')
+        self.droomrobot.say(f'Oke {child_name}, laten we samen gaan oefenen.')
         self.droomrobot.say('Ga even lekker zitten zoals jij dat fijn vindt.')
         sleep(1)
         zit_goed = self.droomrobot.ask_yesno("Zit je zo goed?")
         if 'yes' in zit_goed:
-            self.droomrobot.say('En nu je lekker bent gaan zitten.')
+            self.droomrobot.say('En nu je lekkSSer bent gaan zitten.')
         else:
             self.droomrobot.say('Het zit vaak het lekkerste als je stevig gaat zitten.')
             self.droomrobot.say('met beide benen op de grond.')
@@ -117,7 +117,7 @@ class Bloedafname6:
         self.droomrobot.say('Is het geel, oranje of misschien jouw lievelingskleur?')
         kleur = self.droomrobot.ask_entity_llm('Welke kleur heeft jouw lichtje?')
         self.droomrobot.say(f'{kleur}, wat goed.')
-        self.droomrobot.say('Merk maar eens hoe zo'n {kleur} lichtje je heel sterk maakt en je beschermt.')
+        self.droomrobot.say(f'Merk maar eens hoe zon {kleur} lichtje je heel sterk maakt en je beschermt.')
         self.droomrobot.say('En hoe jij nu een superheld bent met jouw superkracht en alles aankan.')
         self.droomrobot.say('Als je het nodig hebt, kun je diep in en uitademen om het lichtje aan te zetten en je kracht te laten groeien.')
         self.droomrobot.say('Hartstikke goed, ik ben benieuwd hoe goed het lichtje je zometeen gaat helpen.')
@@ -145,20 +145,19 @@ class Bloedafname6:
         self.droomrobot.say('Als je zometeen aan de beurt bent ga ik je helpen om het lichtje weer samen aan te zetten zodat je weer die superheld bent.')
 
         ### INTERVENTIE
-            #dit deel staat niet in originele script, die begint elijk met weer terug op de fijne plek. 
+            #dit deel staat niet in originele script, die begint gelijk met weer terug op de fijne plek. 
         sleep(5)
-        self.droomrobot.say('Wat fijn dat ik je weer mag helpen, we gaan weer samen een droomreis maken.')
-        self.droomrobot.say('Omdat je net al zo goed hebt geoefend, zul je zien dat het nu nog beter en makkelijker gaat.')
-        self.droomrobot.say('Je mag weer goed gaan zitten en je ogen dicht doen zodat deze droomreis nog beter voor jou werkt.')
+        self.droomrobot.say('Wat fijn dat ik je weer zie! We gaan weer op droomreis.')
+        self.droomrobot.say('Je hebt net al zo goed geoefend. Nu gaat het nóg makkelijker!')
+        self.droomrobot.say('Ga maar lekker zitten en doe je oogjes dicht.')
         sleep(1)
-        self.droomrobot.say('Luister maar weer goed naar mijn stem en merk maar dat andere geluiden in het ziekenhuis veel stiller worden.')
-        self.droomrobot.say('Ga maar rustig ademen zoals je dat gewend bent.')
+        self.droomrobot.say('Luister maar naar mijn stem. De andere geluiden worden stiller.')
         self.droomrobot.say('Adem rustig in.')
         self.droomrobot.play_audio('resources/audio/breath_in.wav')
         self.droomrobot.say('en rustig uit.')
         self.droomrobot.play_audio('resources/audio/breath_out.wav')
             #dit deel boven personaliseren op leeftijd? 4-6
-        self.droomrobot.say(f'Stel je maar voor dat je bij {droomplek_lidwoord} {droomplek} bent.')
+        self.droomrobot.say(f'Stel je maar voor dat je bij {droomplek_lidwoord} {droomplek} bent.')S
         self.droomrobot.say('Kijk maar weer naar alle mooie kleuren die om je heen zijn en voel hoe fijn het is om daar te zijn.')
         self.droomrobot.say('Luister maar naar alle fijne geluiden op die plek.')
         # Sound should be here but this is not possible with the LLM generated content
@@ -183,7 +182,7 @@ class Bloedafname6:
         self.droomrobot.say('En nu je lichtje goed aan staat, kan jij weer verder spelen op je fijne plek.')
 
         ### AFSCHEID
-        self.droomrobot.say('Wat heb je jezelf goed geholpen om alles makkelijker te maken.')
+        self.droomrobot.say(f'{child_name}, Wat heb je jezelf goed geholpen om alles makkelijker te maken.')
         ging_goed = self.droomrobot.ask_opinion_llm("Hoe goed is het gegaan?")
         if 'positive' in ging_goed:
             self.droomrobot.say('Wat fijn! je hebt jezelf echt goed geholpen.')
@@ -191,7 +190,7 @@ class Bloedafname6:
             self.droomrobot.say('Dat geeft niets.')
             self.droomrobot.say('Je hebt goed je best gedaan.')
             self.droomrobot.say('En kijk welke stapjes je allemaal al goed gelukt zijn.')
-        self.droomrobot.say('je kon al goed een {kleur} lichtje uitzoeken.') #weet niet of het zo goed gaat met '
+        self.droomrobot.say(f'je kon al goed een {kleur} lichtje uitzoeken.')
         self.droomrobot.say('En weet je wat nu zo fijn is, hoe vaker je dit truukje oefent, hoe makkelijker het wordt.')
         self.droomrobot.say('Je kunt dit ook zonder mij oefenen.')
         self.droomrobot.say('Je hoeft alleen maar je ogen dicht te doen en aan je lichtje te denken.')
@@ -244,6 +243,21 @@ class Bloedafname6:
 
     def nieuwe_droomplek(self, droomplek: str, child_name: str, child_age: int):
         gpt_response = self.droomrobot.gpt.request(
+                        GPTRequest(f'Je bent een sociale robot die praat met een kind van {str(child_age)} jaar oud. '
+                        f'Het kind heet {child_name} en ligt in het ziekenhuis. '
+                        f'Jij bent daar om {child_name} op te vrolijken en af te leiden met een leuk, vriendelijk gesprek. '
+                        f'Gebruik warme, positieve taal die past bij een kind van {child_age} jaar. '
+                        f'Zorg dat je praat zoals een lieve, grappige robotvriend, niet als een volwassene. '
+                        f'Het gesprek gaat over een fijne plek waar het kind zich blij en veilig voelt. '
+                        f'De fijne plek voor het kind is: "{droomplek}". '
+                        f'Jouw taak is om twee korte zinnen te maken over deze plek. '
+                        f'De eerste zin is een observatie over wat deze plek zo fijn maakt. '
+                        f'De tweede zin gaat over wat jij, als droomrobot, daar graag samen met {child_name} zou doen. '
+                        f'Bijvoorbeeld als de fijne plek de speeltuin is zouden dit de twee zinnen kunnen zijn.'
+                        f'"De speeltuin, wat een vrolijke plek! Ik hou van de glijbaan en de schommel."'
+                        f'Weet je wat ik daar graag doe? Heel hoog schommelen, bijna tot aan de sterren."'
+                        f'Gebruik kindvriendelijke verbeelding wat te maken heeft met de plek. '))
+            '''
             GPTRequest(f'Je bent een sociale robot die praat met een kind van {str(child_age)} jaar oud.'
                        f'Het kind ligt in het ziekenhuis.'
                        f'Jij bent daar om het kind af te leiden met een leuk gesprek. '
@@ -257,12 +271,13 @@ class Bloedafname6:
                        f'Weet je wat ik daar graag doe? Heel hoog schommelen, bijna tot aan de sterren."'
                        f'De fijne plek voor het kind is "{droomplek}"'
                        f'Genereer nu de twee zinnen (observatie en wat de robot zou doen op die plek). '))
+            '''
         self.droomrobot.say(gpt_response.response)
         motivation = self.droomrobot.ask_open(f'Wat zou jij daar willen doen {child_name}?')
         if motivation:
             personalized_response = self.droomrobot.personalize(f'Wat zou jij op jouw droomplek {droomplek} willen doen?', child_age, motivation)
             self.droomrobot.say(personalized_response)
-        else:
+        else:    
             self.droomrobot.say("Oke, super.")
 
     def droomplek_not_recognized(self, child_name: str, child_age: int):
@@ -273,9 +288,9 @@ class Bloedafname6:
 
 
 if __name__ == '__main__':
-    bloedafname6 = Bloedafname6(mini_ip="192.168.178.111", mini_id="00167", mini_password="alphago",
+    bloedafname4 = Bloedafname4(mini_ip="192.168.178.111", mini_id="00167", mini_password="alphago",
                                 redis_ip="192.168.178.84",
                                 google_keyfile_path=abspath(join("..", "conf", "dialogflow", "google_keyfile.json")),
                                 openai_key_path=abspath(join("..", "conf", "openai", ".openai_env")),
                                 default_speaking_rate=0.8, computer_test_mode=False)
-    bloedafname6.run('Tessa', 8)
+    bloedafname4.run('Tessa', 5)
