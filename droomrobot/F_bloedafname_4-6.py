@@ -108,20 +108,22 @@ class Bloedafname4:
             self.droomrobot.say('Laten we samen oefenen hoe je die kracht gebruikt.')
         self.droomrobot.say('Adem diep in door je neus.')
         self.droomrobot.play_audio('resources/audio/breath_in.wav')
-        self.droomrobot.say('en blaas langzaam uit door je mond.')
+        self.droomrobot.say('en blaas zachtjes uit door je mond.')
         self.droomrobot.play_audio('resources/audio/breath_out.wav')
-        self.droomrobot.say('Goed zo, dat gaat al heel goed.')
-        self.droomrobot.say('En nu zal je merken dat er een klein, warm lichtje op je arm verschijnt.')
-        self.droomrobot.say('Dat lichtje is magisch en laadt jouw kracht op.')
+        self.droomrobot.say(f'Goed zo {child_name}, dat doe je al heel knap.')
+        self.droomrobot.say('Kijk eens, op je arm komt een klein warm lichtje tevoorschijn.')
+        self.droomrobot.say('Dat lichtje is magisch en maakt je sterk.')
         self.droomrobot.say('Stel je eens voor hoe dat lichtje eruit ziet.')
         self.droomrobot.say('Is het geel, oranje of misschien jouw lievelingskleur?')
         kleur = self.droomrobot.ask_entity_llm('Welke kleur heeft jouw lichtje?')
         self.droomrobot.say(f'{kleur}, wat goed.')
-        self.droomrobot.say(f'Merk maar eens hoe zon {kleur} lichtje je heel sterk maakt en je beschermt.')
-        self.droomrobot.say('En hoe jij nu een superheld bent met jouw superkracht en alles aankan.')
-        self.droomrobot.say('Als je het nodig hebt, kun je diep in en uitademen om het lichtje aan te zetten en je kracht te laten groeien.')
+        self.droomrobot.say(f'Kijk maar eens goed… het {kleur} lichtje maakt jou supersterk.')
+        self.droomrobot.say('Je kunt alles aan, want je hebt nu je superkracht.')
+        self.droomrobot.say('Als je wil, kun je diep in en uitademen om het lichtje aan te zetten en je kracht te laten groeien.')
         self.droomrobot.say('Hartstikke goed, ik ben benieuwd hoe goed het lichtje je zometeen gaat helpen.')
-        self.droomrobot.say('Als je genoeg geoefend hebt, mag je je ogen weer lekker open doen en zeggen, het lichtje gaat mij helpen.')
+        self.droomrobot.say('Als je klaar bent, mag je je oogjes weer open doen.')
+        self.droomrobot.say('En zeggen: “Mijn lichtje gaat mij helpen!”')
+
 
         oefenen_goed = self.droomrobot.ask_yesno('Ging het oefenen goed?')
         if 'yes' in oefenen_goed:
@@ -281,9 +283,9 @@ class Bloedafname4:
             self.droomrobot.say("Oke, super.")
 
     def droomplek_not_recognized(self, child_name: str, child_age: int):
-        self.droomrobot.say('Oh sorry ik begreep je even niet.')
-        self.droomrobot.say('Weetje wat. Ik vind het stand echt super leuk.')
-        self.droomrobot.say('Laten we naar het strand gaan als droomplek.')
+        self.droomrobot.say('Geeft niks, soms hoor ik het even niet goed.')
+        self.droomrobot.say('Weet je wat? Ik vind het strand zó leuk!')
+        self.droomrobot.say('Ik neem je mee naar het strand in je droom.')
         self.strand(child_name, child_age)
 
 
