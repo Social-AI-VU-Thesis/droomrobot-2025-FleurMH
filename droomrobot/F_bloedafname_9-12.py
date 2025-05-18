@@ -49,7 +49,7 @@ class Bloedafname9:
         # self.droomrobot.say('cool he.')
         self.droomrobot.say('Maar het hoeft niet de wolken te zijn. Iedereen heeft een eigen fijne plek.')
         self.droomrobot.say('Laten we nu samen bedenken wat jouw fijne plek is.')
-        self.droomrobot.say('Je kan bijvoorbeeld in gedachten naar het strand, het bos, of op vakantie.')
+        self.droomrobot.say('Je kan bijvoorbeeld in gedachten naar het strand, het bos, of op vakantie. Je mag ook ergens anders heen.')
 
         # droomplek = self.droomrobot.ask_entity('Wat is een plek waar jij je fijn voelt? Het strand, het bos, de speeltuin of de ruimte?',
         #                             {'droom_plek': 1},
@@ -73,7 +73,7 @@ class Bloedafname9:
         droomplek_lidwoord = self.droomrobot.get_article(droomplek)
 
         # SAMEN OEFENEN
-        self.droomrobot.say(f'Laten we alvast oefenen om samen een reis in je fantasie te maken, zodat het je zometeen gaat helpen bij het bloedprikken.')
+        self.droomrobot.say(f'Oke {child_name}, Laten we alvast oefenen om samen een reis in je fantasie te maken, zodat het je zometeen gaat helpen bij het bloedprikken.')
         self.droomrobot.say('Ga even lekker zitten zoals jij dat fijn vindt.')
         sleep(1)
         zit_goed = self.droomrobot.ask_yesno("Zit je goed zo?")
@@ -109,7 +109,7 @@ class Bloedafname9:
         sleep(0.5)
         self.droomrobot.say('En stel je dan nu voor, dat er een luchtballon is op jouw fijne plek.', speaking_rate=0.9)
         sleep(0.5)
-        self.droomrobot.say('Die speciaal op jou staat te wachten.', speaking_rate=0.9)
+        self.droomrobot.say(f'Die speciaal op jou staat te wachten, {child_name}.', speaking_rate=0.9)
         sleep(0.5)
         self.droomrobot.say('Kijk maar eens welke kleur jouw luchtballon heeft.', speaking_rate=0.9)
         sleep(0.5)
@@ -134,9 +134,8 @@ class Bloedafname9:
         self.droomrobot.say('en blaas langzaam uit door je mond.')
         self.droomrobot.play_audio('resources/audio/breath_out.wav')
         sleep(0.5)
-        self.droomrobot.say('Goed zo, dat gaat al heel goed.', speaking_rate=0.9)
-        self.droomrobot.say(
-            'En terwijl je zo goed aan het ademen bent, stel je voor dat er een klein, warm lichtje op je arm verschijnt.', speaking_rate=0.9)
+        self.droomrobot.say(f'Goed zo {child_name}, dat gaat al heel goed.', speaking_rate=0.9)
+        self.droomrobot.say('En terwijl je zo goed aan het ademen bent, stel je voor dat er een klein, warm lichtje op je arm verschijnt.', speaking_rate=0.9)
         sleep(0.5)
         self.droomrobot.say('Dat lichtje laadt jouw kracht op.', speaking_rate=0.9)
         sleep(0.5)
@@ -191,7 +190,7 @@ class Bloedafname9:
 
         ### INTERVENTIE
         sleep(5)
-        self.droomrobot.say('Wat fijn dat ik je weer mag helpen, we gaan weer samen een reis door je fantasie maken.')
+        self.droomrobot.say(f'Hallo {child_name}, Wat fijn dat ik je weer mag helpen, we gaan weer samen een reis door je fantasie maken.')
         self.droomrobot.say(
             'Omdat je net al zo goed hebt geoefend, zul je zien dat het nu nog beter en makkelijker gaat.')
         self.droomrobot.say(
@@ -306,9 +305,10 @@ class Bloedafname9:
     def nieuwe_droomplek(self, droomplek: str, child_name: str, child_age: int):
         gpt_response = self.droomrobot.gpt.request(
             GPTRequest(f'Je bent een sociale robot die praat met een kind van {str(child_age)} jaar oud.'
-                       f'Het kind ligt in het ziekenhuis.'
+                       f'Het kind heet {child_name} en ligt in het ziekenhuis.'
                        f'Jij bent daar om het kind af te leiden met een leuk gesprek. '
-                       f'Gebruik alleen positief taalgebruik.'
+                       f'Gebruik alleen positief taalgebruik dat past bij de leeftijd van het kind.'
+                       f'Praat tegen het kind als een robot vriend.'
                        f'Het gesprek gaat over een fijne plek voor het kind en wat je daar kunt doen.'
                        f'Jouw taak is het genereren van twee zinnen over die plek.'
                        f'De eerste zin is een observatie die de plek typeert'
