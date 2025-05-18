@@ -20,7 +20,7 @@ class Bloedafname9:
                                      openai_key_path, default_speaking_rate,
                                      computer_test_mode)
 
-    def run(self, child_name: str, child_age: int, robot_name: str = "Hero"):
+    def run(self, child_name: str, child_age: int, child_gender: str, robot_name: str = "Hero"):
 
         # INTRODUCTIE
         self.droomrobot.animate(AnimationType.ACTION, "009")
@@ -60,16 +60,16 @@ class Bloedafname9:
 
         if droomplek:
             if 'strand' in droomplek:
-                self.strand(child_name, child_age)
+                self.strand(child_name, child_age, child_gender)
             elif 'bos' in droomplek:
-                self.bos(child_name, child_age)
+                self.bos(child_name, child_age, child_gender)
             elif 'vakantie' in droomplek:
-                self.vakantie(child_name, child_age)
+                self.vakantie(child_name, child_age, child_gender)
             else:
-                self.nieuwe_droomplek(droomplek, child_name, child_age)
+                self.nieuwe_droomplek(droomplek, child_name, child_age, child_gender)
         else:
             droomplek = 'strand'  # default
-            self.droomplek_not_recognized(child_name, child_age)
+            self.droomplek_not_recognized(child_name, child_age, child_gender)
         droomplek_lidwoord = self.droomrobot.get_article(droomplek)
 
         # SAMEN OEFENEN
@@ -257,7 +257,8 @@ class Bloedafname9:
             self.droomrobot.say('Dat geeft niets.')
             self.droomrobot.say('Je hebt goed je best gedaan.')
             self.droomrobot.say('En kijk welke stapjes je allemaal al goed gelukt zijn.')
-        self.droomrobot.say(f'je kon al goed een {kleur} lichtje uitzoeken.')  # weet niet of het zo goed gaat met '
+        self.droomrobot.say(f'je kon al goed een {kleur} lichtje uitzoeken.') 
+        self.droomrobot.say(f'je bent echt een dappere en sterke {child_gender}.')
         self.droomrobot.say('En weet je wat nu zo fijn is, hoe vaker je dit truukje oefent, hoe makkelijker het wordt.')
         self.droomrobot.say('Je kunt dit ook zonder mij oefenen.')
         self.droomrobot.say('Je hoeft alleen maar je ogen dicht te doen en op reis te gaan in je fantasie.')
@@ -267,7 +268,7 @@ class Bloedafname9:
         self.droomrobot.say('Ik ga nu een ander kindje helpen, net zoals ik jou nu heb geholpen.')
         self.droomrobot.say('Misschien zien we elkaar de volgende keer!')
 
-    def strand(self, child_name: str, child_age: int):
+    def strand(self, child_name: str, child_age: int, child_gender: str):
         self.droomrobot.say('Ah, het strand! Ik kan de golven bijna horen en het zand onder mijn voeten voelen.')
         self.droomrobot.say('Weet je wat ik daar graag doe? Een zandkasteel bouwen met een vlag er op.')
         motivation = self.droomrobot.ask_open(f'Wat zou jij daar willen doen {child_name}?')
@@ -278,7 +279,7 @@ class Bloedafname9:
         else:
             self.droomrobot.say("Dat klinkt heerlijk! Ik kan me dat helemaal voorstellen.")
 
-    def bos(self, child_name: str, child_age: int):
+    def bos(self, child_name: str, child_age: int, child_gender: str):
         self.droomrobot.say('Het bos, wat een rustige plek! Ik hou van de hoge bomen en het zachte mos op de grond.')
         self.droomrobot.say(
             'Weet je wat ik daar graag doe? Ik zoek naar dieren die zich verstoppen, zoals vogels of eekhoorns.')
@@ -290,7 +291,7 @@ class Bloedafname9:
         else:
             self.droomrobot.say("Wat een leuk idee! Het bos is echt een magische plek.")
 
-    def vakantie(self, child_name: str, child_age: int):
+    def vakantie(self, child_name: str, child_age: int, child_gender: str):
         self.droomrobot.say('Oh ik hou van vakantie. Mijn laatste vakantie was in Frankrijk op een camping met veel waterglijbanen.')
         self.droomrobot.say('Het was er heerlijk warm in de zon.')
         motivation = self.droomrobot.ask_open(f'Wat gingen jullie op vakantie doen {child_name}?')
@@ -302,7 +303,7 @@ class Bloedafname9:
             self.droomrobot.say("Dat klinkt heel leuk. Wat fijn dat je daaraan kan terug denken.")
 
 
-    def nieuwe_droomplek(self, droomplek: str, child_name: str, child_age: int):
+    def nieuwe_droomplek(self, droomplek: str, child_name: str, child_age: int, child_gender: str):
         gpt_response = self.droomrobot.gpt.request(
             GPTRequest(f'Je bent een sociale robot die praat met een kind van {str(child_age)} jaar oud.'
                        f'Het kind heet {child_name} en ligt in het ziekenhuis.'
@@ -327,7 +328,7 @@ class Bloedafname9:
         else:
             self.droomrobot.say("Oke, super.")
 
-    def droomplek_not_recognized(self, child_name: str, child_age: int):
+    def droomplek_not_recognized(self, child_name: str, child_age: int, child_gender: str):
         self.droomrobot.say('Oh sorry ik begreep je even niet.')
         self.droomrobot.say('Weetje wat. Ik vind het stand echt super leuk.')
         self.droomrobot.say('Laten we naar het strand gaan als droomplek.')
@@ -340,4 +341,4 @@ if __name__ == '__main__':
                                 google_keyfile_path=abspath(join("..", "conf", "dialogflow", "google_keyfile.json")),
                                 openai_key_path=abspath(join("..", "conf", "openai", ".openai_env")),
                                 default_speaking_rate=0.8, computer_test_mode=False)
-    bloedafname6.run('Tessa', 8)
+    bloedafname6.run('Tessa', 8, 'meid')
